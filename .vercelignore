@@ -1,0 +1,10 @@
+.git
+.gitignore
+node_modules
+npm-debug.log
+.DS_Store
+*.pem
+.env.local
+.env.*.local
+.next/build-manifest.json
+.next/trace
