@@ -1,0 +1,317 @@
+[
+  {
+    "ds": "2003-01-01",
+    "y": 129753.6,
+    "yhat": null,
+    "yhat_lower": null,
+    "yhat_upper": null,
+    "type": "historical",
+    "actual": 129753.6
+  },
+  {
+    "ds": "2003-02-01",
+    "y": 140836.19,
+    "yhat": null,
+    "yhat_lower": null,
+    "yhat_upper": null,
+    "type": "historical",
+    "actual": 140836.19
+  },
+  {
+    "ds": "2003-03-01",
+    "y": 174504.9,
+    "yhat": null,
+    "yhat_lower": null,
+    "yhat_upper": null,
+    "type": "historical",
+    "actual": 174504.9
+  },
+  {
+    "ds": "2003-04-01",
+    "y": 201609.55,
+    "yhat": null,
+    "yhat_lower": null,
+    "yhat_upper": null,
+    "type": "historical",
+    "actual": 201609.55
+  },
+  {
+    "ds": "2003-05-01",
+    "y": 192673.11,
+    "yhat": null,
+    "yhat_lower": null,
+    "yhat_upper": null,
+    "type": "historical",
+    "actual": 192673.11
+  },
+  {
+    "ds": "2003-06-01",
+    "y": 168082.56,
+    "yhat": null,
+    "yhat_lower": null,
+    "yhat_upper": null,
+    "type": "historical",
+    "actual": 168082.56
+  },
+  {
+    "ds": "2003-07-01",
+    "y": 187731.88,
+    "yhat": null,
+    "yhat_lower": null,
+    "yhat_upper": null,
+    "type": "historical",
+    "actual": 187731.88
+  },
+  {
+    "ds": "2003-08-01",
+    "y": 197809.3,
+    "yhat": null,
+    "yhat_lower": null,
+    "yhat_upper": null,
+    "type": "historical",
+    "actual": 197809.3
+  },
+  {
+    "ds": "2003-09-01",
+    "y": 263973.36,
+    "yhat": null,
+    "yhat_lower": null,
+    "yhat_upper": null,
+    "type": "historical",
+    "actual": 263973.36
+  },
+  {
+    "ds": "2003-10-01",
+    "y": 568290.97,
+    "yhat": null,
+    "yhat_lower": null,
+    "yhat_upper": null,
+    "type": "historical",
+    "actual": 568290.97
+  },
+  {
+    "ds": "2003-11-01",
+    "y": 1029837.66,
+    "yhat": null,
+    "yhat_lower": null,
+    "yhat_upper": null,
+    "type": "historical",
+    "actual": 1029837.66
+  },
+  {
+    "ds": "2003-12-01",
+    "y": 261876.46,
+    "yhat": null,
+    "yhat_lower": null,
+    "yhat_upper": null,
+    "type": "historical",
+    "actual": 261876.46
+  },
+  {
+    "ds": "2004-01-01",
+    "y": 316577.42,
+    "yhat": null,
+    "yhat_lower": null,
+    "yhat_upper": null,
+    "type": "historical",
+    "actual": 316577.42
+  },
+  {
+    "ds": "2004-02-01",
+    "y": 311419.53,
+    "yhat": null,
+    "yhat_lower": null,
+    "yhat_upper": null,
+    "type": "historical",
+    "actual": 311419.53
+  },
+  {
+    "ds": "2004-03-01",
+    "y": 205733.73,
+    "yhat": null,
+    "yhat_lower": null,
+    "yhat_upper": null,
+    "type": "historical",
+    "actual": 205733.73
+  },
+  {
+    "ds": "2004-04-01",
+    "y": 206148.12,
+    "yhat": null,
+    "yhat_lower": null,
+    "yhat_upper": null,
+    "type": "historical",
+    "actual": 206148.12
+  },
+  {
+    "ds": "2004-05-01",
+    "y": 273438.39,
+    "yhat": null,
+    "yhat_lower": null,
+    "yhat_upper": null,
+    "type": "historical",
+    "actual": 273438.39
+  },
+  {
+    "ds": "2004-06-01",
+    "y": 286674.22,
+    "yhat": null,
+    "yhat_lower": null,
+    "yhat_upper": null,
+    "type": "historical",
+    "actual": 286674.22
+  },
+  {
+    "ds": "2004-07-01",
+    "y": 327144.09,
+    "yhat": null,
+    "yhat_lower": null,
+    "yhat_upper": null,
+    "type": "historical",
+    "actual": 327144.09
+  },
+  {
+    "ds": "2004-08-01",
+    "y": 461501.27,
+    "yhat": null,
+    "yhat_lower": null,
+    "yhat_upper": null,
+    "type": "historical",
+    "actual": 461501.27
+  },
+  {
+    "ds": "2004-09-01",
+    "y": 320750.91,
+    "yhat": null,
+    "yhat_lower": null,
+    "yhat_upper": null,
+    "type": "historical",
+    "actual": 320750.91
+  },
+  {
+    "ds": "2004-10-01",
+    "y": 552924.25,
+    "yhat": null,
+    "yhat_lower": null,
+    "yhat_upper": null,
+    "type": "historical",
+    "actual": 552924.25
+  },
+  {
+    "ds": "2004-11-01",
+    "y": 1089048.01,
+    "yhat": null,
+    "yhat_lower": null,
+    "yhat_upper": null,
+    "type": "historical",
+    "actual": 1089048.01
+  },
+  {
+    "ds": "2004-12-01",
+    "y": 372802.66,
+    "yhat": null,
+    "yhat_lower": null,
+    "yhat_upper": null,
+    "type": "historical",
+    "actual": 372802.66
+  },
+  {
+    "ds": "2005-01-01",
+    "y": 339543.42,
+    "yhat": null,
+    "yhat_lower": null,
+    "yhat_upper": null,
+    "type": "historical",
+    "actual": 339543.42
+  },
+  {
+    "ds": "2005-02-01",
+    "y": 358186.18,
+    "yhat": null,
+    "yhat_lower": null,
+    "yhat_upper": null,
+    "type": "historical",
+    "actual": 358186.18
+  },
+  {
+    "ds": "2005-03-01",
+    "y": 374262.76,
+    "yhat": null,
+    "yhat_lower": null,
+    "yhat_upper": null,
+    "type": "historical",
+    "actual": 374262.76
+  },
+  {
+    "ds": "2005-04-01",
+    "y": 261633.29,
+    "yhat": null,
+    "yhat_lower": null,
+    "yhat_upper": null,
+    "type": "historical",
+    "actual": 261633.29
+  },
+  {
+    "ds": "2005-05-01",
+    "y": 457861.06,
+    "yhat": null,
+    "yhat_lower": null,
+    "yhat_upper": null,
+    "type": "historical",
+    "actual": 457861.06
+  },
+  {
+    "ds": "2005-06-01",
+    "y": null,
+    "yhat": 391050.28,
+    "yhat_lower": 351945.25,
+    "yhat_upper": 430155.31,
+    "type": "forecast",
+    "actual": null
+  },
+  {
+    "ds": "2005-07-01",
+    "y": null,
+    "yhat": 446254.94,
+    "yhat_lower": 401629.45,
+    "yhat_upper": 490880.44,
+    "type": "forecast",
+    "actual": null
+  },
+  {
+    "ds": "2005-08-01",
+    "y": null,
+    "yhat": 629530.63,
+    "yhat_lower": 566577.56,
+    "yhat_upper": 692483.69,
+    "type": "forecast",
+    "actual": null
+  },
+  {
+    "ds": "2005-09-01",
+    "y": null,
+    "yhat": 437534.05,
+    "yhat_lower": 393780.65,
+    "yhat_upper": 481287.46,
+    "type": "forecast",
+    "actual": null
+  },
+  {
+    "ds": "2005-10-01",
+    "y": null,
+    "yhat": 754240.07,
+    "yhat_lower": 678816.06,
+    "yhat_upper": 829664.07,
+    "type": "forecast",
+    "actual": null
+  },
+  {
+    "ds": "2005-11-01",
+    "y": null,
+    "yhat": 1485562.7,
+    "yhat_lower": 1337006.43,
+    "yhat_upper": 1634118.97,
+    "type": "forecast",
+    "actual": null
+  }
+]
