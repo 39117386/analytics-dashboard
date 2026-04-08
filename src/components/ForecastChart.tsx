@@ -37,27 +37,22 @@ const currencyFormatter = new Intl.NumberFormat("es-ES", {
 
 export function ForecastChart({ data, splitLabel }: ForecastChartProps) {
   return (
-    <section className="rounded-3xl border border-white/10 bg-slate-900/70 p-6 shadow-2xl shadow-black/10">
+    <section className="rounded-3xl bg-slate-900/70 p-6 shadow-2xl shadow-black/10 ring-1 ring-white/8">
       <div className="mb-5 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
         <div>
           <p className="text-xs uppercase tracking-[0.24em] text-amber-300/70">
-            Prediccion futura
+            Forecast
           </p>
           <h2 className="mt-2 text-xl font-semibold text-white">
-            Historico, forecast y banda de incertidumbre
+            Historical vs forecast
           </h2>
-          <p className="mt-2 text-sm text-slate-400">
-            La linea solida representa ventas historicas y la linea punteada la
-            proyeccion del modelo.
-          </p>
-          <p className="mt-2 text-xs text-slate-500">
-            Tooltip: forecast basado en tendencia y estacionalidad, con banda
-            de incertidumbre.
-          </p>
         </div>
         {splitLabel ? (
-          <div className="rounded-2xl border border-amber-400/20 bg-amber-400/10 px-4 py-2 text-sm text-amber-200">
-            Inicio forecast: {splitLabel}
+          <div
+            className="rounded-2xl bg-amber-400/10 px-4 py-2 text-sm text-amber-200 ring-1 ring-amber-400/20"
+            title="Forecast starts after the last historical point."
+          >
+            Start: {splitLabel}
           </div>
         ) : null}
       </div>
@@ -82,11 +77,12 @@ export function ForecastChart({ data, splitLabel }: ForecastChartProps) {
                 borderRadius: "1rem",
               }}
               labelStyle={{ color: "#e2e8f0" }}
+              cursor={{ stroke: "#475569", strokeDasharray: "4 4" }}
               formatter={(value, name) => {
                 const labels: Record<string, string> = {
-                  actual: "Ventas historicas",
-                  forecast: "Prediccion",
-                  uncertaintyBand: "Incertidumbre",
+                  actual: "Historical data",
+                  forecast: "Forecast",
+                  uncertaintyBand: "Expected range",
                 };
                 return [
                   currencyFormatter.format(Number(value ?? 0)),
@@ -102,7 +98,7 @@ export function ForecastChart({ data, splitLabel }: ForecastChartProps) {
                 strokeDasharray="5 5"
                 ifOverflow="extendDomain"
                 label={{
-                  value: "Forecast starts",
+                  value: "Forecast",
                   position: "insideTopRight",
                   fill: "#cbd5e1",
                   fontSize: 12,

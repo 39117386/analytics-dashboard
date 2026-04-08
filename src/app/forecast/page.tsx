@@ -60,9 +60,9 @@ function mapForecastData(rows: ForecastRawPoint[]): ForecastPoint[] {
           ? row.actual
           : typeof row.y === "number" && Number.isFinite(row.y)
             ? row.y
-          : !isForecast && Number.isFinite(row.yhat)
-            ? row.yhat
-            : null;
+            : !isForecast && Number.isFinite(row.yhat)
+              ? row.yhat
+              : null;
       const forecast =
         typeof row.yhat === "number" && Number.isFinite(row.yhat) && isForecast
           ? row.yhat
@@ -134,10 +134,11 @@ export default function ForecastPage() {
     () => rows.filter((row) => row.isForecast && row.forecast !== null),
     [rows]
   );
+
   const nextPrediction = forecastRows[0] ?? null;
-  const lastHistorical = historicalRows[historicalRows.length - 1] ?? null;
-  const lastHistoricalValue = lastHistorical?.actual ?? null;
   const nextPredictionValue = nextPrediction?.forecast ?? null;
+  const lastHistoricalValue =
+    historicalRows[historicalRows.length - 1]?.actual ?? null;
   const averageBandRatio = useMemo(() => {
     if (!forecastRows.length) return null;
 
@@ -159,6 +160,7 @@ export default function ForecastPage() {
     if (!ratios.length) return null;
     return ratios.reduce((sum, ratio) => sum + ratio, 0) / ratios.length;
   }, [forecastRows]);
+
   const confidenceLabel = getConfidenceLabel(averageBandRatio);
   const growth =
     nextPredictionValue !== null &&
@@ -170,21 +172,26 @@ export default function ForecastPage() {
 
   const kpis = [
     {
-      label: "Next month prediction",
-      value: nextPredictionValue !== null
-        ? currencyFormatter.format(nextPredictionValue)
-        : "N/D",
+      label: "Next prediction",
+      value:
+        nextPredictionValue !== null
+          ? currencyFormatter.format(nextPredictionValue)
+          : "N/D",
       color: "text-amber-300",
+      icon: "🔮",
     },
     {
-      label: "Growth vs last actual",
+      label: "Growth",
       value: growth !== null ? `${growth.toFixed(1)}%` : "N/D",
-      color: growth !== null && growth >= 0 ? "text-emerald-300" : "text-rose-300",
+      color:
+        growth !== null && growth >= 0 ? "text-emerald-300" : "text-rose-300",
+      icon: growth !== null && growth >= 0 ? "📈" : "📉",
     },
     {
-      label: "Forecast periods",
+      label: "Periods",
       value: forecastRows.length.toLocaleString("es-ES"),
       color: "text-cyan-300",
+      icon: "🗓️",
     },
     {
       label: "Confidence",
@@ -195,13 +202,14 @@ export default function ForecastPage() {
           : confidenceLabel === "Medium"
             ? "text-amber-300"
             : "text-rose-300",
+      icon: "🎯",
     },
   ];
 
   if (loading) {
     return (
       <main className="flex min-h-[calc(100vh-73px)] items-center justify-center px-6">
-        <p className="text-slate-400">Cargando modelo de forecast...</p>
+        <p className="text-slate-400">Loading forecast</p>
       </main>
     );
   }
@@ -216,119 +224,53 @@ export default function ForecastPage() {
 
   return (
     <main className="px-6 py-10">
-      <div className="mx-auto flex max-w-7xl flex-col gap-6">
-        <section className="rounded-3xl border border-white/10 bg-slate-900/70 p-8 shadow-2xl shadow-black/10">
-          <p className="text-xs uppercase tracking-[0.28em] text-amber-300/80">
-            Forecast
-          </p>
-          <h1 className="mt-3 text-4xl font-semibold tracking-tight text-white">
-            Predictive Sales Dashboard
-          </h1>
-          <p className="mt-3 max-w-3xl text-sm leading-6 text-slate-400">
-            Vista predictiva basada en `forecast.json`, con datos ordenados por
-            fecha, historico integrado, linea de prediccion y banda de
-            incertidumbre.
-          </p>
+      <div className="mx-auto flex max-w-7xl flex-col gap-8">
+        <section className="rounded-[2rem] bg-slate-900/75 p-8 shadow-2xl shadow-black/10 ring-1 ring-white/8">
+          <div className="grid grid-cols-1 gap-8 xl:grid-cols-[1.15fr_0.85fr] xl:items-end">
+            <div>
+              <p className="text-xs uppercase tracking-[0.28em] text-amber-300/80">
+                Forecast
+              </p>
+              <h1 className="mt-3 text-4xl font-semibold tracking-tight text-white">
+                Sales forecast
+              </h1>
+            </div>
+
+            <div className="rounded-[1.75rem] bg-[linear-gradient(135deg,rgba(245,158,11,0.18),rgba(34,211,238,0.08))] p-6 ring-1 ring-amber-300/15">
+              <p className="text-sm text-amber-100/80">Next prediction</p>
+              <p className="mt-3 text-sm text-slate-300">
+                {nextPrediction?.label ?? "Next month"}
+              </p>
+              <p className="mt-2 text-5xl font-semibold tracking-tight text-white">
+                {nextPredictionValue !== null
+                  ? currencyFormatter.format(nextPredictionValue)
+                  : "N/D"}
+              </p>
+            </div>
+          </div>
         </section>
 
         <KpiGrid items={kpis} />
 
         <ForecastChart data={rows} splitLabel={splitLabel} />
 
-        <div className="grid grid-cols-1 gap-6 xl:grid-cols-2">
-          <section className="rounded-3xl border border-white/10 bg-slate-900/70 p-6 shadow-2xl shadow-black/10">
-            <p className="text-xs uppercase tracking-[0.24em] text-amber-300/70">
-              Historical anchor
-            </p>
-            <h2 className="mt-2 text-xl font-semibold text-white">
-              Ventas historicas
-            </h2>
-            <p className="mt-2 text-sm text-slate-400">
-              El ultimo dato real sirve como referencia antes del cambio hacia la
-              proyeccion futura.
-            </p>
-            <div className="mt-6 rounded-2xl border border-cyan-400/15 bg-slate-950/70 p-5">
-              <p className="text-sm text-slate-400">{lastHistorical?.label ?? "N/D"}</p>
-              <p className="mt-2 text-3xl font-semibold text-cyan-300">
-                {lastHistoricalValue !== null
-                  ? currencyFormatter.format(lastHistoricalValue)
-                  : "N/D"}
+        <section className="rounded-3xl bg-slate-900/65 p-6 shadow-xl shadow-black/10 ring-1 ring-white/8">
+          <div className="flex flex-wrap items-start justify-between gap-4">
+            <div>
+              <p className="text-xs uppercase tracking-[0.24em] text-amber-300/70">
+                Forecast
               </p>
+              <h2 className="mt-2 text-lg font-semibold text-white">Next prediction</h2>
             </div>
-          </section>
-
-          <section className="rounded-3xl border border-white/10 bg-slate-900/70 p-6 shadow-2xl shadow-black/10">
-            <p className="text-xs uppercase tracking-[0.24em] text-amber-300/70">
-              Forward view
-            </p>
-            <h2 className="mt-2 text-xl font-semibold text-white">
-              Prediccion futura
-            </h2>
-            <p className="mt-2 text-sm text-slate-400">
-              Primer punto proyectado con rango esperado segun el modelo.
-            </p>
-            <div className="mt-6 rounded-2xl border border-amber-400/15 bg-slate-950/70 p-5">
-              <p className="text-sm text-slate-400">{nextPrediction?.label ?? "N/D"}</p>
-              <p className="mt-2 text-3xl font-semibold text-amber-300">
+            <div className="text-right">
+              <p className="text-sm text-slate-500">{nextPrediction?.label ?? "N/D"}</p>
+              <p className="mt-2 text-4xl font-semibold text-amber-300">
                 {nextPredictionValue !== null
                   ? currencyFormatter.format(nextPredictionValue)
                   : "N/D"}
               </p>
-              <p className="mt-3 text-sm text-slate-400">
-                Range:{" "}
-                {nextPrediction?.yhatLower !== null &&
-                nextPrediction?.yhatUpper !== null
-                  ? `${currencyFormatter.format(
-                      nextPrediction.yhatLower
-                    )} to ${currencyFormatter.format(nextPrediction.yhatUpper)}`
-                  : "N/D"}
-              </p>
             </div>
-          </section>
-        </div>
-
-        <section className="grid grid-cols-1 gap-6 xl:grid-cols-[1.1fr_0.9fr]">
-          <article className="rounded-3xl border border-white/10 bg-slate-900/70 p-6 shadow-2xl shadow-black/10">
-            <p className="text-xs uppercase tracking-[0.24em] text-cyan-300/70">
-              Model notes
-            </p>
-            <h2 className="mt-2 text-xl font-semibold text-white">
-              Forecast based on trend + seasonality decomposition
-            </h2>
-            <p className="mt-3 text-sm leading-6 text-slate-400">
-              El dashboard espera una serie limpia y ordenada por fecha, donde
-              el historico usa `y` y el forecast usa `yhat`, `yhat_lower` y
-              `yhat_upper`. La visualizacion separa ambas fases con una linea
-              vertical y usa la amplitud del intervalo como senal simple de
-              confianza.
-            </p>
-          </article>
-
-          <article className="rounded-3xl border border-white/10 bg-slate-900/70 p-6 shadow-2xl shadow-black/10">
-            <p className="text-xs uppercase tracking-[0.24em] text-cyan-300/70">
-              Confidence details
-            </p>
-            <h2 className="mt-2 text-xl font-semibold text-white">
-              Model stability
-            </h2>
-            <p className="mt-3 text-sm text-slate-400">
-              Average prediction band:
-              {" "}
-              {averageBandRatio !== null
-                ? `${(averageBandRatio * 100).toFixed(1)}%`
-                : "N/D"}
-            </p>
-            <p className="mt-2 text-sm text-slate-400">
-              Confidence indicator:
-              {" "}
-              <span className="font-semibold text-slate-200">{confidenceLabel}</span>
-            </p>
-            <p className="mt-4 text-sm leading-6 text-slate-400">
-              Bandas mas angostas suelen indicar un forecast mas estable; si la
-              amplitud crece demasiado o aparecen negativos, conviene revisar
-              limpieza de datos, regularizacion y validacion del modelo.
-            </p>
-          </article>
+          </div>
         </section>
       </div>
     </main>

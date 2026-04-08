@@ -182,7 +182,7 @@ export default function DashboardPage() {
           </h1>
           <p className="mt-3 max-w-3xl text-sm leading-6 text-slate-400">
             Resumen ejecutivo de ventas historicas basado en el CSV original,
-            con agregacion mensual y una visualizacion lista para portfolio.
+            con agregacion mensual 
           </p>
         </section>
 
